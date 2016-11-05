@@ -1,0 +1,16 @@
+pkgname=mabox-pipemenus
+pkgver=20160413
+pkgrel=1
+pkgdesc="pipemenus for openbox"
+arch=(any)
+url="https://github.com/MaboxOS/$pkgname"
+license=(GPL)
+depends=()
+makedepends=('git')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+package () {
+	install -dm755 $pkgdir/usr/bin
+	cp $pkgname/usr/bin/* $pkgdir/usr/bin
+}

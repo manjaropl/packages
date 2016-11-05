@@ -1,0 +1,19 @@
+pkgname=mabox-common
+pkgver=20160323
+pkgrel=1
+pkgdesc="Common files for Mabox"
+arch=(any)
+url="https://github.com/MaboxOS/$pkgname"
+license=(GPL)
+depends=()
+makedepends=('git')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+package () {
+	install -dm755 $pkgdir/usr/lib/mabox/mabox-common
+	cp $pkgname/*include* $pkgdir/usr/lib/mabox/mabox-common
+	
+	
+	
+}

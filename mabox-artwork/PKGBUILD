@@ -1,0 +1,20 @@
+pkgname=mabox-artwork
+pkgver=20160505
+pkgrel=1
+pkgdesc="Artwork for Mabox"
+arch=(any)
+url="https://github.com/MaboxOS/$pkgname"
+license=(GPL)
+depends=()
+makedepends=('git')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+package () {
+	install -dm755 $pkgdir/usr/share/backgrounds
+	rm -r $pkgname/.git
+	cp -r $pkgname/* $pkgdir/usr/share/backgrounds/
+	
+	
+	
+}

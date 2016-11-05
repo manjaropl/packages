@@ -1,0 +1,16 @@
+pkgname=mabox-utilities
+pkgver=20160422
+pkgrel=1
+pkgdesc="Utilities for Mabox"
+arch=(any)
+url="https://github.com/MaboxOS/$pkgname"
+license=(GPL)
+depends=('wmctrl')
+makedepends=('git')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+package () {
+	install -dm755 $pkgdir/usr/bin
+	cp $pkgname/bin/* $pkgdir/usr/bin
+}
