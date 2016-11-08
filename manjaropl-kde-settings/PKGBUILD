@@ -4,7 +4,7 @@
 pkgbase=manjaropl-kde-settings
 pkgname=('manjaropl-kde-settings'
          'manjaropl-kde-minimal-settings')
-pkgver=20161107.02efb6a
+pkgver=20161108.588acee
 pkgrel=1
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
@@ -17,7 +17,6 @@ md5sums=('SKIP')
 pkgver() {
   # Mimics ABS pkgver described like this:
   # Commit date + git rev-parse --short origin/master
-  cd "${srcdir}/${pkgname}"
   (
   git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
   echo .
