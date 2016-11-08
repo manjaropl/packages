@@ -1,5 +1,11 @@
+# Maintainer: Napcok <napcok [at] gmail [dot] com>
+# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+# Maintainer: Napcok <napcok [at] gmail [dot] com>
+# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
+
 pkgname=mabox-pipemenus
-pkgver=20160413
+pkgver=20160413.31b8145
 pkgrel=1
 pkgdesc="pipemenus for openbox"
 arch=(any)
@@ -9,6 +15,17 @@ depends=()
 makedepends=('git')
 source=("git+$url.git")
 md5sums=('SKIP')
+
+pkgver() {
+  # Mimics ABS pkgver described like this:
+  # Commit date + git rev-parse --short origin/master
+  cd mabox-pipemenus
+  (
+  git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
+  echo .
+  git rev-parse --short master
+  ) | tr -d '\n'
+}
 
 package () {
 	install -dm755 $pkgdir/usr/bin
