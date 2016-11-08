@@ -1,0 +1,34 @@
+pkgbase=manjaropl-kde-settings
+pkgname=('manjaropl-kde-settings'
+         'manjaropl-kde-minimal-settings')
+pkgver=20161107
+pkgrel=1
+pkgdesc="Manjaro Linux KDE settings"
+arch=('any')
+url="https://github.com/manjaropl/manjaropl-kde-settings"
+license=('GPL')
+makedepends=('git')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+
+package_manjaropl-kde-settings() {
+  pkgdesc="Manjaro PL Linux KDE Community edition settings"
+  conflicts=('manjaro-desktop-settings')
+  provides=('manjaro-desktop-settings')
+  depends=('manjaro-base-skel' 'maia-icon-theme' 'gtk-theme-maia' 'plasma5-themes-maia')
+
+  cp -r ${srcdir}/${pkgbase}/etc ${pkgdir}/etc
+  cp -r ${srcdir}/${pkgbase}/usr ${pkgdir}/usr
+}
+
+package_manjaropl-kde-minimal-settings() {
+  pkgdesc="Manjaro PL Linux KDE Community edition minimal settings"
+  conflicts=('manjaro-desktop-settings')
+  provides=('manjaro-desktop-settings')
+  depends=('manjaro-base-skel' 'maia-icon-theme' 'gtk-theme-maia' 'plasma5-themes-maia')
+
+  cp -r "${srcdir}/${pkgbase}/etc" "${pkgdir}/etc"
+  cp -r "${srcdir}/${pkgbase}/usr" "${pkgdir}/usr"
+  cp -f "${srcdir}/${pkgbase}/minimal/plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc"
+}
