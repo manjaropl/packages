@@ -1,4 +1,5 @@
 # Maintainer: Napcok <napcok [at] gmail [dot] com>
+# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgbase=manjaropl-kde-settings
 pkgname=('manjaropl-kde-settings'
