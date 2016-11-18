@@ -2,7 +2,7 @@
 # Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=mabox-utilities
-pkgver=20160422.277e3a4
+pkgver=20161118.b535b2f
 pkgrel=1
 pkgdesc="Utilities for Mabox"
 arch=(any)
@@ -27,4 +27,10 @@ pkgver() {
 package () {
 	install -dm755 $pkgdir/usr/bin
 	cp $pkgname/bin/* $pkgdir/usr/bin
+	install -dm755 $pkgdir/usr/share/mbcc
+	cp -r $pkgname/mbcc/* $pkgdir/usr/share/mbcc
+	install -dm755 $pkgdir/usr/share/mbstyler
+	cp $pkgname/mbstyler/* $pkgdir/usr/share/mbstyler
+	install -dm755 $pkgdir/usr/share/icons
+	cp $pkgname/icons/* $pkgdir/usr/share/icons
 }
