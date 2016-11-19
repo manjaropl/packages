@@ -1,0 +1,21 @@
+# Maintainer: Daniel Napora <napcok@gmail.com>
+
+pkgname=plymouth-theme-mabox
+pkgver=1.0
+pkgrel=1
+pkgdesc="Mabox plymouth theme"
+repo="plymouth-themes-manjaro"
+arch=('any')
+url="https://github.com/manjaropl/$repo"
+license=('GPL')
+depends=('plymouth')
+install=$pkgname.install
+makedepends=('git')
+source="git+$url.git"
+md5sums=('SKIP')
+
+package() {
+	cd $srcdir/$repo
+	install -dm755 "$pkgdir/usr/share/plymouth/themes"
+	cp -r mabox "$pkgdir/usr/share/plymouth/themes"
+}
