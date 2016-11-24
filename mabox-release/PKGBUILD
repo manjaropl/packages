@@ -1,0 +1,18 @@
+pkgname=mabox-release
+pkgver=16.11
+pkgrel=1
+pkgdesc="Mabox's release definition"
+arch=("any")
+url="http://maboxlinux.org/"
+license=('GPL2')
+depends=('lsb-release')
+source=('lsb-release')
+install="mabox-release.install"
+sha256sums=(SKIP)
+
+package() {
+    # Copy files
+    mkdir -p ${pkgdir}/etc
+    install -m644 ${srcdir}/lsb-release ${pkgdir}/etc/
+
+}
