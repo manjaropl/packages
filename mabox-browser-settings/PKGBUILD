@@ -1,0 +1,35 @@
+# Maintainer: Napcok <napcok [at] gmail [dot] com>
+# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=mabox-browser-settings-pl
+pkgver=20161127
+pkgrel=1
+pkgdesc="Mabox Linux settings browser defaults"
+arch=('any')
+url="https://github.com/maboxOS/$pkgname"
+license=('GPL')
+conflicts=('manjaro-firefox-settings')
+replaces=('manjaro-firefox-settings')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+pkgver() {
+  # Mimics ABS pkgver described like this:
+  # Commit date + git rev-parse --short origin/master
+  cd mabox-utilities
+  (
+  git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
+  echo .
+  git rev-parse --short master
+  ) | tr -d '\n'
+}
+
+package() {
+  cd $pkgname-$_gitcommit
+  mkdir -p $pkgdir/usr/lib/{chrome,chromium,{firefox,light,palemoon}/distribution}
+  cp chrome/* $pkgdir/usr/lib/chrome
+  cp chrome/* $pkgdir/usr/lib/chromium
+  cp firefox/* $pkgdir/usr/lib/firefox/distribution
+  cp palemoon/* $pkgdir/usr/lib/palemoon/distribution
+  ln -s /usr/lib/firefox/distribution $pkgdir/usr/lib/light/distribution
+}
