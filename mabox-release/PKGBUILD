@@ -1,3 +1,6 @@
+# Maintainer: Napcok <napcok [at] gmail [dot] com>
+# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
+
 pkgname=mabox-release
 pkgver=16.11
 pkgrel=1
@@ -7,6 +10,7 @@ url="http://maboxlinux.org/"
 license=('GPL2')
 depends=('lsb-release')
 source=('lsb-release')
+conflicts=('manjaro-release' 'manjaro-release-dev')
 install="mabox-release.install"
 sha256sums=(SKIP)
 
