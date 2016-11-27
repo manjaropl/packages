@@ -2,7 +2,7 @@
 # Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=mabox-browser-settings-pl
-pkgver=20161127
+pkgver=20161127.39bf2f8
 pkgrel=1
 pkgdesc="Mabox Linux settings browser defaults"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 pkgver() {
   # Mimics ABS pkgver described like this:
   # Commit date + git rev-parse --short origin/master
-  cd mabox-utilities
+  cd $pkgname
   (
   git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
   echo .
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-  cd $pkgname-$_gitcommit
+  cd $pkgname
   mkdir -p $pkgdir/usr/lib/{chrome,chromium,{firefox,light,palemoon}/distribution}
   cp chrome/* $pkgdir/usr/lib/chrome
   cp chrome/* $pkgdir/usr/lib/chromium
