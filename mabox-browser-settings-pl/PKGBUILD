@@ -1,7 +1,7 @@
 # Maintainer: Napcok <napcok [at] gmail [dot] com>
 # Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
-pkgname=mabox-browser-settings
+pkgname=mabox-browser-settings-pl
 pkgver=20161127
 pkgrel=1
 pkgdesc="Mabox Linux settings browser defaults"
