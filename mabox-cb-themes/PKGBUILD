@@ -1,0 +1,37 @@
+
+pkgname=mabox-cb-themes
+pkgver=20161130.c350c23
+pkgrel=1
+pkgdesc="BunsenLabs themes forked for gtk 3.20 compability"
+arch=('any')
+url="https://github.com/MaboxOS/mabox-cb-themes"
+license=('GPL3' 'CCPL:by-sa')
+depends=('gtk-engine-murrine')
+makedepends=('git')
+optdepends=(                                                    \
+  'lib32-gtk-engine-murrine: required for multilib (GTK2)'      \
+  'gtk3: required for the GTK3 themes')
+conflicts=("bunsen-themes-git")
+source=("git+$url.git")
+md5sums=('SKIP')
+
+pkgver() {
+  # Mimics ABS pkgver described like this:
+  # Commit date + git rev-parse --short origin/master
+  cd mabox-cb-themes
+  (
+  git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
+  echo .
+  git rev-parse --short master
+  ) | tr -d '\n'
+}
+
+
+package() {
+  
+  install -d "$pkgdir"/usr/share/themes
+  install -d "$pkgdir"/usr/share/doc/mabox-cb-themes
+
+  cp -r Bunsen-Blackish Bunsen CrunchBang "$pkgdir"/usr/share/themes
+  cp LICENSE.{GPL,CC} "$pkgdir"/usr/share/doc/mabox-cb-themes
+}
