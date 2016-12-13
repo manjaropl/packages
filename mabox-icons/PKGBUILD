@@ -1,0 +1,38 @@
+pkgname=mabox-icons
+pkgver=20161213
+pkgrel=1
+pkgdesc='Official MaboxLinux icons'
+arch=('any')
+url="https://github.com/MaboxOS/$pkgname"
+licence=GPL
+makedepends=('git')
+source=("git+$url.git")
+md5sums=('SKIP')
+
+pkgver() {
+  date +%Y%m%d
+}
+
+package() {
+  install -dm755 $pkgdir/usr/share/icons/mabox
+  cp -r $srcdir/$pkgname/green $pkgdir/usr/share/icons/mabox
+  install -dm755 $pkgdir/usr/share/icons/hicolor/16x16/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/22x22/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/24x24/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/32x32/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/48x48/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/64x64/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/96x96/apps
+  install -dm755 $pkgdir/usr/share/icons/hicolor/128x128/apps
+  
+  cd $pkgdir/usr/share/icons/hicolor
+  src=/usr/share/icons/mabox/green
+  ln -s $src/16x16.png 16x16/apps/mabox.png
+  ln -s $src/22x22.png 22x22/apps/mabox.png
+  ln -s $src/24x24.png 24x24/apps/mabox.png
+  ln -s $src/32x32.png 32x32/apps/mabox.png
+  ln -s $src/48x48.png 48x48/apps/mabox.png
+  ln -s $src/64x64.png 64x64/apps/mabox.png
+  ln -s $src/96x96.png 96x96/apps/mabox.png
+  ln -s $src/128x128.png 128x128/apps/mabox.png
+}
